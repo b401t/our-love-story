@@ -288,6 +288,7 @@ export default function Gallery() {
 
         {/* Gallery grid */}
         <div
+          className="gallery-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',

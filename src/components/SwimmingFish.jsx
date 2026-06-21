@@ -136,7 +136,9 @@ export default function SwimmingFish({ count = 8 }) {
           position: 'absolute',
           top: `${top}%`,
           left: 0,
+          opacity: 0,
           animation: `${animName} ${duration}s ${delay}s linear infinite`,
+          animationFillMode: 'backwards',
           zIndex: 0,
         },
       };

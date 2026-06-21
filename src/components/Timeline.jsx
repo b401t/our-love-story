@@ -20,29 +20,21 @@ const MILESTONES = [
 ];
 
 function TimelineCard({ milestone, index, visible }) {
-  const isLeft = index % 2 === 0;
+  const side = index % 2 === 0 ? 'left' : 'right';
 
   return (
     <div
+      className={`timeline-item ${side}`}
       style={{
-        display: 'flex',
-        alignItems: 'flex-start',
-        gap: '24px',
-        flexDirection: isLeft ? 'row' : 'row-reverse',
         opacity: visible ? 1 : 0,
-        transform: visible ? 'translateX(0)' : `translateX(${isLeft ? '-40px' : '40px'})`,
+        transform: visible ? 'translateX(0)' : `translateX(${side === 'left' ? '-30px' : '30px'})`,
         transition: `opacity 0.6s ${0.15 * index}s ease-out, transform 0.6s ${0.15 * index}s ease-out`,
-        position: 'relative',
-        width: '100%',
       }}
     >
-      {/* Timeline dot */}
+      {/* Dot */}
       <div
+        className="timeline-dot"
         style={{
-          position: 'absolute',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          zIndex: 2,
           width: '44px',
           height: '44px',
           borderRadius: '50%',
@@ -52,7 +44,6 @@ function TimelineCard({ milestone, index, visible }) {
           justifyContent: 'center',
           fontSize: '1.3rem',
           boxShadow: `0 0 20px ${milestone.color}44`,
-          flexShrink: 0,
         }}
         aria-hidden="true"
       >
@@ -61,14 +52,8 @@ function TimelineCard({ milestone, index, visible }) {
 
       {/* Card */}
       <div
-        className="glass-card"
-        style={{
-          width: 'calc(50% - 46px)',
-          marginLeft: isLeft ? 0 : 'auto',
-          marginRight: isLeft ? 'auto' : 0,
-          padding: '28px 24px',
-          textAlign: isLeft ? 'right' : 'left',
-        }}
+        className={`glass-card timeline-card ${side}-card`}
+        style={{ padding: '28px 24px' }}
       >
         <span
           style={{
@@ -99,8 +84,8 @@ function TimelineCard({ milestone, index, visible }) {
         </p>
       </div>
 
-      {/* Spacer for the other side */}
-      <div style={{ width: 'calc(50% - 46px)' }} aria-hidden="true" />
+      {/* Spacer (hidden on mobile via CSS) */}
+      <div className="timeline-spacer" aria-hidden="true" />
     </div>
   );
 }
@@ -175,23 +160,9 @@ export default function Timeline() {
           Every milestone is a treasure
         </p>
 
-        {/* Timeline line */}
         <div style={{ position: 'relative', padding: '24px 0' }}>
           {/* Vertical line */}
-          <div
-            style={{
-              position: 'absolute',
-              left: '50%',
-              top: 0,
-              bottom: 0,
-              width: '3px',
-              background: 'linear-gradient(to bottom, var(--color-purple-300), var(--color-pink-300), var(--color-purple-300))',
-              transform: 'translateX(-50%)',
-              borderRadius: 'var(--radius-full)',
-              opacity: 0.6,
-            }}
-            aria-hidden="true"
-          />
+          <div className="timeline-line" aria-hidden="true" />
 
           {/* Milestones */}
           <div
@@ -213,7 +184,6 @@ export default function Timeline() {
           </div>
         </div>
 
-        {/* Add more hint */}
         <p
           style={{
             textAlign: 'center',

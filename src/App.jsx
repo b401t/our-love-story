@@ -1,6 +1,7 @@
 import FloatingHearts from './components/FloatingHearts';
 import FloatingFlowers from './components/FloatingFlowers';
 import SwimmingFish from './components/SwimmingFish';
+import FloatingBubbles from './components/FloatingBubbles';
 import HeroSection from './components/HeroSection';
 import AboutUs from './components/AboutUs';
 import Timeline from './components/Timeline';
@@ -14,6 +15,7 @@ export default function App() {
       <FloatingHearts count={28} />
       <FloatingFlowers count={16} />
       <SwimmingFish count={7} />
+      <FloatingBubbles intervalMs={2800} />
 
       {/* Main content */}
       <main style={{ position: 'relative', zIndex: 1 }}>

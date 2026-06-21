@@ -363,10 +363,133 @@ body {
   transform: translateY(0);
 }
 
+/* --- Timeline layout classes --- */
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  position: relative;
+  width: 100%;
+}
+.timeline-item.left {
+  flex-direction: row;
+}
+.timeline-item.right {
+  flex-direction: row-reverse;
+}
+.timeline-dot {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  flex-shrink: 0;
+}
+.timeline-card {
+  width: calc(50% - 46px);
+}
+.timeline-card.left-card {
+  margin-left: 0;
+  margin-right: auto;
+  text-align: right;
+}
+.timeline-card.right-card {
+  margin-left: auto;
+  margin-right: 0;
+  text-align: left;
+}
+.timeline-spacer {
+  width: calc(50% - 46px);
+}
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--color-purple-300), var(--color-pink-300), var(--color-purple-300));
+  transform: translateX(-50%);
+  border-radius: var(--radius-full);
+  opacity: 0.6;
+}
+
 /* --- Responsive --- */
 @media (max-width: 768px) {
   :root {
-    --section-padding: 80px 20px;
-    --section-gap: 50px;
+    --section-padding: 64px 16px;
+    --section-gap: 40px;
+  }
+
+  /* Section titles */
+  .section-title {
+    font-size: clamp(1.8rem, 8vw, 2.6rem) !important;
+  }
+  .section-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 36px;
+  }
+
+  /* Timeline: single-column, line on left */
+  .timeline-line {
+    left: 20px;
+    transform: none;
+  }
+  .timeline-dot {
+    left: 20px;
+    transform: translateX(-50%);
+  }
+  .timeline-item.left,
+  .timeline-item.right {
+    flex-direction: row !important;
+  }
+  .timeline-card {
+    width: calc(100% - 56px) !important;
+    margin-left: 56px !important;
+    margin-right: 0 !important;
+    text-align: left !important;
+  }
+  .timeline-spacer {
+    display: none;
+  }
+
+  /* Gallery */
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 14px;
+  }
+
+  /* Glass card padding */
+  .glass-card {
+    padding: 24px 18px !important;
+  }
+
+  /* Hero */
+  .hero-heart svg {
+    width: 80px;
+    height: 80px;
+  }
+
+  /* Floating elements: reduce on mobile for performance */
+  .floating-heart,
+  .floating-flower {
+    will-change: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --section-padding: 48px 12px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px;
+  }
+
+  .glass-card {
+    padding: 20px 14px !important;
+  }
+
+  .section-title {
+    font-size: 1.6rem !important;
   }
 }
