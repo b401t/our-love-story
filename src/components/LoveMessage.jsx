@@ -28,7 +28,7 @@ export default function LoveMessage() {
       ref={ref}
       style={{
         position: 'relative',
-        padding: 'var(--section-padding)',
+        padding: '120px 24px 32px',
         zIndex: 1,
       }}
     >
@@ -205,7 +205,7 @@ export default function LoveMessage() {
       <footer
         style={{
           textAlign: 'center',
-          padding: '60px 24px 40px',
+          padding: '60px 24px 24px',
           color: 'var(--color-text-lighter)',
           fontSize: '0.85rem',
           fontWeight: 500,
