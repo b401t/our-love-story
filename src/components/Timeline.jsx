@@ -2,8 +2,16 @@ import { useEffect, useRef, useState } from 'react';
 
 const MILESTONES = [
   {
+    date: 'October 3rd, 2025',
+    title: 'Our First Messages',
+    description:
+      'We Started Our Journey Together',
+    icon: '📱',
+    color: '#e8708a',
+  },
+  {
     date: 'December 3rd, 2025',
-    title: 'We Started Our Journey Together',
+    title: 'When The Right Time Comes',
     description:
       'The day two hearts decided to walk the same path. The beginning of our forever.',
     icon: '💕',
